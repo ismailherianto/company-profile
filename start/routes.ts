@@ -27,3 +27,11 @@ Route.get('/', async ({ view }) => {
 Route.get('/blog', async ({ view }) => {
   return view.render('blog')
 })
+
+Route.group(() => {
+  Route.get('post', 'PostsController.index')
+  Route.post('post', 'PostsController.store')
+  Route.get('post/:id', 'PostsController.show')
+  Route.put('post/:id','PostsController.update')
+  Route.delete('post/:id','PostsController.destroy')
+}).prefix('/api/v1')
